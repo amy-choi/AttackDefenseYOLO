@@ -1,0 +1,1 @@
+Store image files (.jpg)
