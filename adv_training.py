@@ -31,36 +31,36 @@ def get_lr(optimizer):
 
 
 def choose_adv(model, yolo_loss, images, targets, attacker, cuda):
-    adv_conf = attacker.generate_conf(images, targets, yolo_loss, model)
+    adv_obj = attacker.generate_conf(images, targets, yolo_loss, model)
     adv_cls = attacker.generate_cls(images, targets, yolo_loss, model)
     adv_loc = attacker.generate_loc(images, targets, yolo_loss, model)
 
     with torch.no_grad():
         if cuda:
-            adv_conf = adv_conf.cuda()
+            adv_obj = adv_obj.cuda()
             adv_cls = adv_cls.cuda()
             adv_loc = adv_loc.cuda()
 
-        out_conf = model(adv_conf)
+        out_obj = model(adv_obj)
         out_cls = model(adv_cls)
         out_loc = model(adv_loc)
-        loss_conf = 0
+        loss_obj = 0
         loss_cls = 0
         loss_loc = 0
 
         for l in range(3):
-            loss_all, _, _, _, _ = yolo_loss(l, out_conf[l], targets)
-            loss_conf += loss_all
+            loss_all, _, _, _, _ = yolo_loss(l, out_obj[l], targets)
+            loss_obj += loss_all
             loss_all, _, _, _, _ = yolo_loss(l, out_cls[l], targets)
             loss_cls += loss_all
             loss_all, _, _, _, _ = yolo_loss(l, out_loc[l], targets)
             loss_loc += loss_all
 
-    if (loss_conf > loss_cls) and (loss_conf > loss_loc):
-        adv = adv_conf
-    elif (loss_cls > loss_conf) and (loss_cls > loss_loc):
+    if (loss_obj > loss_cls) and (loss_obj > loss_loc):
+        adv = adv_obj
+    elif (loss_cls > loss_obj) and (loss_cls > loss_loc):
         adv = adv_cls
-    elif (loss_loc > loss_cls) and (loss_loc > loss_conf):
+    elif (loss_loc > loss_cls) and (loss_loc > loss_obj):
         adv = adv_loc
 
     return adv
@@ -252,7 +252,7 @@ if __name__ == "__main__":
     #    annotation_path = 'train_coco.txt'
 
     epsilon = 4
-    att_type = "conf"  ######## ["cls", "loc", "conf"] ################################
+    att_type = "obj"  ######## ["cls", "loc", "obj"] ################################
 
     if epsilon != 1:
         num_iter = 10
