@@ -31,7 +31,7 @@ def get_lr(optimizer):
 
 
 def choose_adv(model, yolo_loss, images, targets, attacker, cuda):
-    adv_obj = attacker.generate_conf(images, targets, yolo_loss, model)
+    adv_obj = attacker.generate_obj(images, targets, yolo_loss, model)
     adv_cls = attacker.generate_cls(images, targets, yolo_loss, model)
     adv_loc = attacker.generate_loc(images, targets, yolo_loss, model)
 
