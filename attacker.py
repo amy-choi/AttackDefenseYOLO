@@ -34,17 +34,17 @@ class FGSMAttacker:
         outputs = model(image_clean + delta)
         losses_cls = 0
         losses_loc = 0
-        losses_conf = 0
+        losses_obj = 0
         losses_total = 0
         num_pos_all = 0
 
         for l in range(len(outputs)):
-            loss_total, loss_loc, loss_conf, loss_cls, num_pos = yolo_loss(
+            loss_total, loss_loc, loss_obj, loss_cls, num_pos = yolo_loss(
                 l, outputs[l], label
             )
             losses_cls += loss_cls
             losses_loc += loss_loc
-            losses_conf += loss_conf
+            losses_obj += loss_obj
             losses_total += loss_total
             num_pos_all += num_pos
 
@@ -53,13 +53,13 @@ class FGSMAttacker:
         elif self.attack_type == "loc":
             loss = losses_loc / num_pos_all
         elif self.attack_type == "conf":
-            loss = losses_conf / num_pos_all
+            loss = losses_obj / num_pos_all
         elif self.attack_type == "total":
             loss = losses_total / num_pos_all
         elif self.attack_type == "conf_loc":
-            loss = (losses_conf + losses_loc) / num_pos_all
+            loss = (losses_obj + losses_loc) / num_pos_all
         elif self.attack_type == "conf_cls":
-            loss = (losses_conf + losses_cls) / num_pos_all
+            loss = (losses_obj + losses_cls) / num_pos_all
         elif self.attack_type == "cls_loc":
             loss = (losses_cls + losses_loc) / num_pos_all
 
@@ -106,7 +106,7 @@ class FGSMAttacker:
 
         return adv_img
 
-    def generate_conf(self, image_clean, label, yolo_loss, model):
+    def generate_obj(self, image_clean, label, yolo_loss, model):
         image_clean = image_clean.clone().detach().to(self.device)  # .cuda()
         delta = (
             torch.zeros_like(image_clean)
@@ -121,8 +121,8 @@ class FGSMAttacker:
         num_pos_all = 0
 
         for l in range(len(outputs)):
-            _, _, loss_conf, _, num_pos = yolo_loss(l, outputs[l], label)
-            losses += loss_conf
+            _, _, loss_obj, _, num_pos = yolo_loss(l, outputs[l], label)
+            losses += loss_obj
             num_pos_all += num_pos
 
         loss = losses / num_pos_all
@@ -201,17 +201,17 @@ class PGDAttacker:
 
             losses_cls = 0
             losses_loc = 0
-            losses_conf = 0
+            losses_obj = 0
             losses_total = 0
             num_pos_all = 0
 
             for l in range(len(outputs)):
-                loss_total, loss_loc, loss_conf, loss_cls, num_pos = yolo_loss(
+                loss_total, loss_loc, loss_obj, loss_cls, num_pos = yolo_loss(
                     l, outputs[l], label
                 )
                 losses_cls += loss_cls
                 losses_loc += loss_loc
-                losses_conf += loss_conf
+                losses_obj += loss_obj
                 losses_total += loss_total
                 num_pos_all += num_pos
 
@@ -220,13 +220,13 @@ class PGDAttacker:
             elif self.attack_type == "loc":
                 loss = losses_loc / num_pos_all
             elif self.attack_type == "conf":
-                loss = losses_conf / num_pos_all
+                loss = losses_obj / num_pos_all
             elif self.attack_type == "total":
                 loss = losses_total / num_pos_all
             elif self.attack_type == "conf_loc":
-                loss = (losses_conf + losses_loc) / num_pos_all
+                loss = (losses_obj + losses_loc) / num_pos_all
             elif self.attack_type == "conf_cls":
-                loss = (losses_conf + losses_cls) / num_pos_all
+                loss = (losses_obj + losses_cls) / num_pos_all
             elif self.attack_type == "cls_loc":
                 loss = (losses_cls + losses_loc) / num_pos_all
 
