@@ -35,9 +35,9 @@ wd = getcwd()
 
 for image_set in sets:
     image_ids = open("data/ImageSets/Main/%s.txt" % (image_set)).read().strip().split()
-    list_file = open("%s.txt" % (image_set), "w", encoding="utf-8")  #!!!!!!!!!!!!!!!
+    list_file = open("%s_kitti.txt" % (image_set), "w", encoding="utf-8")  
     for image_id in image_ids:
-        list_file.write("%s/data/JPEGImages/%s.jpg" % (wd, image_id))  #!!!!!!!!!!!!!!!
+        list_file.write("%s/data/JPEGImages/%s.jpg" % (wd, image_id))  
         convert_annotation(image_id, list_file)
         list_file.write("\n")
     list_file.close()
