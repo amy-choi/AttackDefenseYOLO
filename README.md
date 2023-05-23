@@ -16,7 +16,7 @@ This repository contains the adversarial attack/defense implementation for the p
    * Put the label file in the Annotation under the data folder.                                                                   
    * Put the picture file in JPEGImages under the data folder.      
                                                                
-**2. Create .txt file by using voc_annotation.py for training.**                                                                    
+**2. Create .txt file by using kitti_annotation.py for training.**                                                                    
    * Create a your_classes.txt under the model_data folder and write the categories you need to classifiy in it.      
    * Modify the class_path in kitti_annotation.py to model_data/your_cls_classes.txt.        
                                                                
