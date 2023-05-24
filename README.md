@@ -7,7 +7,7 @@ This repository contains the adversarial attack/defense implementation for the p
 > IV 2022
 
 <p align="center">
-<img src="resources/overview.PNG" height = "50%" width = "70%"">
+<img src="resources/overview.PNG" height = "50%" width = "60%"">
 </p>
 
                                                             
