@@ -81,7 +81,7 @@ The tables below show mAP comparison of various adversarially trained YOLO model
 | **M**<sub>*OBJ*</sub>  | **49.43**  | **48.83** |
 | **M**<sub>*OA*</sub>   | 42.26  | 41.86 | 
                                                                
-#### b. COCO=traffic
+#### b. COCO_traffic
                                                                
 | Method  |  **A**<sub>*obj*</sub> | **A**<sub>*loc+cls+conf*</sub> |
 |:---------------:|:----------:|:--------------:|
