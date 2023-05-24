@@ -1,7 +1,7 @@
 # [Adversarial Attack and Defense of YOLO Detectors in Autonomous Driving Scenarios (IV 2022)](https://arxiv.org/abs/2202.04781)
 
 This repository contains the adversarial attack/defense implementation for the paper:
-> Im Choi, Jung, and Qing Tian. "Adversarial attack and defense of YOLO detectors in autonomous driving scenarios." 2022 IEEE Intelligent Vehicles Symposium (IV). IEEE, 2022.
+> Jung Im Choi and Qing Tian. "Adversarial attack and defense of YOLO detectors in autonomous driving scenarios." 2022 IEEE Intelligent Vehicles Symposium (IV). IEEE, 2022.
 
 <p align="center">
 <img src="resources/overview.PNG" height = "50%" width = "60%"">
@@ -11,7 +11,7 @@ This repository contains the adversarial attack/defense implementation for the p
 ## Model Training 
 **1. Convert your datasets to VOC format for training.**                                                                      
    * Put the label file in the Annotation under the data folder.                                                                   
-   * Put the picture file in JPEGImages under the data folder.      
+   * Put the image file in JPEGImages under the data folder.      
                                                                
 **2. Create .txt file by using kitti_annotation.py for training.**                                                                    
    * Create a your_classes.txt under the model_data folder and write the categories you need to classifiy in it.      
