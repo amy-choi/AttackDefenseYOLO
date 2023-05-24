@@ -92,7 +92,7 @@ The tables below show mAP comparison of various adversarially trained YOLO model
                                                                
                                                                
 ## Citation
-If you find it helpful in your research, please consider citeing our paper: 
+If you find this repository helpful to your research, please consider citing our paper: 
 
 ```
 @InProceedings{choi2022advYOLO,
