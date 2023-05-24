@@ -106,7 +106,7 @@ If you find it helpful in your research, please consider citeing our paper:
 ```
 
 ## References
-Any pretrained weights and other codes needed for YOLOv4 can be founded on [link](https://github.com/bubbliiiing/yolov4-pytorch).
+Any pretrained weights and other codes needed for YOLOv4 can be founded via [link](https://github.com/bubbliiiing/yolov4-pytorch).
 
 ## Contact
 If you have any questions or suggestions, feel free to contact us. (<a>choij@bgsu.edu</a>) 
