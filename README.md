@@ -1,10 +1,7 @@
 # [Adversarial Attack and Defense of YOLO Detectors in Autonomous Driving Scenarios (IV 2022)](https://arxiv.org/abs/2202.04781)
 
 This repository contains the adversarial attack/defense implementation for the paper:
-> Adversarial Attack and Defense of YOLO Detectors in Autonomous Driving Scenarios  
-> Jung Im Choi, Qing Tian   
-> Bowling Green State University  
-> IV 2022
+> Im Choi, Jung, and Qing Tian. "Adversarial attack and defense of YOLO detectors in autonomous driving scenarios." 2022 IEEE Intelligent Vehicles Symposium (IV). IEEE, 2022.
 
 <p align="center">
 <img src="resources/overview.PNG" height = "50%" width = "60%"">
